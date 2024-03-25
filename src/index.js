@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Client, IntentsBitField, Message } = require('discord.js')
 
 const client = new Client({
@@ -14,10 +15,13 @@ client.on('ready', (c) => {
 })
 
 client.on('messageCreate', (msg) => {
-    if (msg.author.bot)
+    if (msg.author.bot){
+    return;
+    }
+
     if (msg.content === 'hello') {
         msg.reply('Guten Tag!');
     }
 });
 
-client.login("MTIyMTQxNDAwMTU0ODk4ODQ5Nw.Gy-Uke.Wt1-8Nlso-puBc0v-0aauuCht5AnkKXA456RzE");
+client.login(process.env.TOKEN);
